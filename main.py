@@ -270,35 +270,34 @@ with tab5:
             if df is not None and not df.empty:
                 st.subheader(f"Summary for {ticker_list}")
 
-                col1, col2, = st.columns(2)
+                
+                ticker = ticker_list[0]
+                hist = yf.Ticker(ticker).history(period="100d")
 
-                with col1:
-                    ticker = ticker_list[0]
-                    hist = yf.Ticker(ticker).history(period="100d")
+                prices = np.vstack([hist["Open"].values,
+                                    hist["High"].values,
+                                    hist["Low"].values,
+                                    hist["Close"].values])
 
-                    prices = np.vstack([hist["Open"].values,
-                                        hist["High"].values,
-                                        hist["Low"].values,
-                                        hist["Close"].values])
+                X, Y = np.meshgrid(
+                    np.arange(prices.shape[1]), np.arange(prices.shape[0]))
 
-                    X, Y = np.meshgrid(
-                        np.arange(prices.shape[1]), np.arange(prices.shape[0]))
+                fig = go.Figure(
+                    data=[go.Surface(z=prices, x=X, y=Y, colorscale='Spectral')])
 
-                    fig = go.Figure(
-                        data=[go.Surface(z=prices, x=X, y=Y, colorscale='Spectral')])
-
-                    fig.update_layout(
-                        scene=dict(
-                            xaxis_title='Time (Days)',
-                            yaxis_title='Price Type (O,H,L,C)',
-                            yaxis=dict(tickvals=[0, 1, 2, 3], ticktext=[
-                                       "Open", "High", "Low", "Close"]),
-                            zaxis_title='Price',
-                            camera=dict(eye=dict(x=1.5, y=1.5, z=1.5))
+                fig.update_layout(
+                    scene=dict(
+                        xaxis_title='Time (Days)',
+                        yaxis_title='Price Type (O,H,L,C)',
+                        yaxis=dict(tickvals=[0, 1, 2, 3], ticktext=[
+                                    "Open", "High", "Low", "Close"]),
+                        zaxis_title='Price',
+                        camera=dict(eye=dict(x=1.5, y=1.5, z=1.5))
                         ),
                         width=1000,
                         height=700,
                         margin=dict(l=50, r=50, t=100, b=50)
                     )
 
-                    st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(fig, use_container_width=True)
+
