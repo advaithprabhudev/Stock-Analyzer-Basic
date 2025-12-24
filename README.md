@@ -43,7 +43,7 @@ streamlit run app.py
 
 ## How to use
 
-1. Type in a stock ticker symbol (like TSLA, AAPL, MSFT, etc.)
+1. Type in any ONE stock ticker symbol (like TSLA, AAPL, MSFT, etc.)
 2. Choose your start and end dates
 3. Click through the different tabs:
    - **Analytics** - basic price data
@@ -65,7 +65,7 @@ streamlit run app.py
 ## Notes
 
 - The app caches data so it doesn't keep re-downloading the same stuff
-- You can enter multiple tickers separated by commas (though some features work better with one ticker)
+- You can only enter one ticker symbol at a time! (Some features crash when two tickers are added)
 - Data comes from Yahoo Finance so you need internet connection
 - Some calculations might take a second depending on the date range
 
@@ -86,3 +86,4 @@ This is just a learning project! Don't use this for actual investment decisions.
 
 
 Made with ❤️ and lots of Stack Overflow 😅
+
