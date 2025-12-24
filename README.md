@@ -1,4 +1,4 @@
-markdown# 📈 Stock Analyzer App
+# 📈 Stock Analyzer App
 
 > ⚠️ **Disclaimer:** This tool is for educational purposes only and should not be considered financial advice. Always do your own research and consult with a qualified financial advisor before making investment decisions.
 
@@ -83,5 +83,6 @@ If I have time, I might add:
 This is just a learning project! Don't use this for actual investment decisions. I'm not a financial advisor lol.
 
 ---
+
 
 Made with ❤️ and lots of Stack Overflow 😅
