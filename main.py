@@ -257,7 +257,7 @@ with tab4:
                 plt.close()
 
 with tab5:
-    if st.button("Analyze Summary!"):
+    if st.button("Analyze 3D Heatmap!"):
         ticker_list = [t.strip().upper()
                        for t in stock_ticker.split(",") if t.strip()]
         if not ticker_list:
@@ -268,7 +268,7 @@ with tab5:
                 df = data_fetching(ticker_list, start_date, end_date)
 
             if df is not None and not df.empty:
-                st.subheader(f"Summary for {ticker_list}")
+                st.subheader(f"3D Heatmap {ticker_list}")
 
                 
                 ticker = ticker_list[0]
@@ -300,4 +300,5 @@ with tab5:
                     )
 
                 st.plotly_chart(fig, use_container_width=True)
+
 
